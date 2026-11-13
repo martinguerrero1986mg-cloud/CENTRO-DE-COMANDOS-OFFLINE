@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071426">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none">
+  <title>Centro de Comandos IA · Microaplicaciones Offline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-view">
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-logo" src="../assets/logo-microaplicaciones-offline-header.jpg" alt="Microaplicaciones Offline">
+      <div class="brand-copy"><strong>Centro de Comandos IA</strong><span>Modos profesionales para IA externas</span></div>
+    </div>
+    <div class="top-actions">
+      <div class="offline-pill"><i class="offline-dot"></i><span>100% OFFLINE</span></div>
+      <button class="btn ghost" id="helpBtn">AYUDA ?</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="home-screen active" id="homeScreen" aria-labelledby="homeTitle">
+      <div class="home-intro">
+        <p class="eyebrow">Centro de Comandos IA</p>
+        <h1 id="homeTitle">¿Cómo querés crear el modo para la IA?</h1>
+        <p class="home-lead">Elegí una sola opción. El sistema crea comandos para activar modos de trabajo en una IA externa, no pedidos de contenido.</p>
+        <div class="compatibility-message">
+          <span class="compatibility-icon">✓</span>
+          <div><strong>Compatible con las principales IA conversacionales</strong><p>Los comandos están redactados en lenguaje natural y fueron interpretados correctamente en Gemini, ChatGPT, Claude y Grok.</p></div>
+        </div>
+      </div>
+
+      <div class="experience-grid" aria-label="Formas de crear un modo">
+        <button class="experience-card" data-experience="create">
+          <span class="experience-icon">✦</span>
+          <span class="experience-copy"><strong>Crear un modo</strong><small>Describí brevemente tu trabajo y recibí varias capacidades compatibles.</small><em>Ideal si no sabés cuál elegir.</em></span>
+          <span class="experience-arrow">→</span>
+        </button>
+        <button class="experience-card" data-experience="presets">
+          <span class="experience-icon">◆</span>
+          <span class="experience-copy"><strong>Modos preparados</strong><small>Elegí una combinación profesional completa, lista para generar.</small><em>La opción más rápida.</em></span>
+          <span class="experience-arrow">→</span>
+        </button>
+        <button class="experience-card" data-experience="library">
+          <span class="experience-icon">⌕</span>
+          <span class="experience-copy"><strong>Biblioteca oficial</strong><small>Buscá y combiná entre las capacidades oficiales compatibles.</small><em>Para una selección personalizada.</em></span>
+          <span class="experience-arrow">→</span>
+        </button>
+        <button class="experience-card" data-experience="favorites">
+          <span class="experience-icon">★</span>
+          <span class="experience-copy"><strong>Favoritos</strong><small>Volvé a usar rápidamente las capacidades que marcaste.</small><em id="favoriteHomeCount">Ningún favorito guardado.</em></span>
+          <span class="experience-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="workspace-screen" id="workspaceScreen">
+      <section class="work-panel" id="createPanel" aria-labelledby="createTitle">
+        <header class="panel-header">
+          <button class="back-home" data-home>← VOLVER AL INICIO</button>
+          <div><p class="eyebrow">Orientación guiada</p><h1 id="createTitle">Crear un modo</h1><p>Contanos solamente en qué estás trabajando. No se convertirá en una tarea.</p></div>
+          <button class="btn danger" id="clearCreateBtn">LIMPIAR</button>
+        </header>
+        <div class="create-layout">
+          <div class="context-box">
+            <label for="contextInput"><strong>1. Describí en qué estás trabajando o vas a trabajar</strong><span>Con una descripción general alcanza. El sistema la usa para interpretar el área y recomendar capacidades.</span></label>
+            <textarea id="contextInput" maxlength="600" placeholder="Ejemplo: Estamos creando una microaplicación offline y necesitamos construirla, auditarla y corregir errores de raíz."></textarea>
+            <div class="context-actions"><span id="contextHint">No agregues duración, audiencia ni formato de entrega. 0/600</span><button class="btn primary" id="recommendBtn">VALIDAR Y VER RECOMENDACIONES</button></div><div class="create-guide"><strong>Cómo funciona esta pantalla</strong><p>Tu descripción no muestra las 258 capacidades a la vez. El sistema interpreta un área y presenta una selección recomendada. Después de validar una vez, podés cambiar manualmente el área y las recomendaciones se actualizan automáticamente, o abrir la Biblioteca oficial para explorar el catálogo completo.</p></div>
+          </div>
+          <div class="guided-side">
+            <div class="guided-heading"><div><p class="mini-title">2. Elegí el área que mejor represente tu trabajo</p><p class="guided-subtitle">El sistema propone un área según tu texto. Después de validar, podés cambiarla y las tarjetas se actualizan al instante.</p></div><button class="btn ghost small" id="openLibraryFromCreate">VER BIBLIOTECA COMPLETA</button></div>
+            <div class="area-picker" aria-label="Áreas profesionales">
+              <button data-profile="write">Comunicación</button><button data-profile="analyze">Análisis</button><button data-profile="content">Contenido</button><button data-profile="video">Video</button><button data-profile="image">Imagen</button><button data-profile="audio">Audio</button><button data-profile="research">Investigación</button><button data-profile="learn">Aprendizaje</button><button data-profile="tech">Software</button><button data-profile="product">Producto UX</button><button data-profile="ai">IA / Agentes</button><button data-profile="legal">Legal</button>
+            </div>
+            <div class="profile-banner" id="createProfileBanner">Escribí un contexto o elegí un área.</div><div class="recommendation-heading"><strong>Capacidades recomendadas</strong><span>Selección filtrada según tu contexto y el área elegida.</span></div>
+            <div class="recommendation-grid" id="recommendationGrid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-panel" id="presetsPanel" aria-labelledby="presetsTitle">
+        <header class="panel-header">
+          <button class="back-home" data-home>← VOLVER AL INICIO</button>
+          <div><p class="eyebrow">Selección rápida</p><h1 id="presetsTitle">Modos profesionales preparados</h1><p>Elegí una combinación. No tenés que completar ningún campo.</p></div>
+          <div class="pager page-control" aria-label="Paginación de modos preparados"><span class="pager-label">NAVEGACIÓN</span><button class="btn ghost" id="presetPrevBtn">← PÁGINA ANTERIOR</button><strong id="presetPageText">Página 1 de 1</strong><button class="btn ghost" id="presetNextBtn">PÁGINA SIGUIENTE →</button></div>
+        </header>
+        <div class="preset-grid" id="presetGrid"></div>
+      </section>
+
+      <section class="work-panel" id="libraryPanel" aria-labelledby="libraryTitle">
+        <header class="panel-header compact">
+          <button class="back-home" data-home>← VOLVER AL INICIO</button>
+          <div><p class="eyebrow">Selección personalizada</p><h1 id="libraryTitle">Biblioteca oficial</h1><p>Marcá entre una y cinco capacidades compatibles.</p></div>
+          <div class="pager page-control" aria-label="Paginación de biblioteca"><span class="pager-label">NAVEGACIÓN</span><button class="btn ghost" id="libraryPrevBtn">← PÁGINA ANTERIOR</button><strong id="libraryPageText">Página 1 de 1</strong><button class="btn ghost" id="libraryNextBtn">PÁGINA SIGUIENTE →</button></div>
+        </header>
+        <div class="library-tools"><input id="searchInput" type="search" placeholder="Buscar por función, área o palabra clave" autocomplete="off" aria-label="Buscar capacidades por función, área o palabra clave"><select id="categoryInput" aria-label="Categoría"><option value="Todos">Todas las categorías</option></select><label><input id="compatibleOnlyInput" type="checkbox" checked> Sólo compatibles</label></div>
+        <div class="library-status" id="libraryStatus"></div>
+        <div class="library-grid" id="libraryGrid"></div>
+      </section>
+
+      <section class="work-panel" id="favoritesPanel" aria-labelledby="favoritesTitle">
+        <header class="panel-header">
+          <button class="back-home" data-home>← VOLVER AL INICIO</button>
+          <div><p class="eyebrow">Acceso rápido</p><h1 id="favoritesTitle">Tus capacidades favoritas</h1><p>Seleccioná las que quieras volver a utilizar.</p></div>
+          <div class="pager page-control" aria-label="Paginación de favoritos"><span class="pager-label">NAVEGACIÓN</span><button class="btn ghost" id="favoritePrevBtn">← PÁGINA ANTERIOR</button><strong id="favoritePageText">Página 1 de 1</strong><button class="btn ghost" id="favoriteNextBtn">PÁGINA SIGUIENTE →</button></div>
+        </header>
+        <div class="favorites-grid" id="favoritesGrid"></div>
+      </section>
+    </section>
+
+    <section class="result-screen" id="resultScreen" aria-labelledby="resultTitle">
+      <header class="result-header">
+        <div><p class="eyebrow">Modo listo para usar</p><h1 id="resultTitle">Comando generado</h1><p>Copialo y pegalo en la IA externa. Podés copiarlo nuevamente todas las veces que necesites.</p></div>
+        <button class="back-home" data-home>← VOLVER AL INICIO</button>
+      </header>
+      <div class="result-layout">
+        <aside class="result-summary"><strong>Capacidades activadas</strong><span id="resultModeName"></span><div id="resultCapabilities"></div><div class="result-proof">La IA deberá confirmar el modo y esperar tu primera tarea.</div></aside>
+        <div class="result-command"><textarea id="resultCommand" readonly spellcheck="false" aria-label="Comando generado"></textarea></div>
+      </div>
+      <div class="result-actions"><button class="btn primary copy-result" id="copyResultBtn">COPIAR COMANDO</button></div>
+    </section>
+  </main>
+
+  <footer class="bottom-bar" id="bottomBar">
+    <div class="selection-summary"><span id="selectedCount">0</span><div><strong id="selectionTitle">Sin capacidades seleccionadas</strong><small id="selectedNames">Podés seleccionar entre una y cinco.</small></div></div>
+    <div class="bottom-actions"><button class="btn danger" id="clearSelectionBtn">LIMPIAR SELECCIÓN</button><button class="btn primary generate-command" id="generateCommandBtn" disabled>GENERAR COMANDO</button></div>
+  </footer>
+
+  <div class="copyright-footer" aria-label="Copyright">Copyright © 2026 Martín Guerrero</div>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle"><div class="dialog-head"><h2 id="detailTitle">Capacidad</h2><button class="close" data-close="detailDialog" aria-label="Cerrar">×</button></div><div class="dialog-body"><div id="detailMeta" class="badges"></div><p id="detailDescription"></p><div id="detailInstruction" class="instruction-box"></div></div><div class="dialog-actions"><button class="btn ghost" id="detailFavoriteBtn">☆ FAVORITO</button><button class="btn primary" id="detailToggleBtn">AGREGAR</button></div></dialog>
+
+  <dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-head"><h2 id="helpTitle">Cómo utilizar el sistema</h2><button class="close" data-close="helpDialog" aria-label="Cerrar">×</button></div><div class="dialog-body"><ol><li>En la portada elegí una sola de las cuatro formas de crear el modo.</li><li>Si usás Crear un modo, escribí el contexto y presioná VALIDAR Y VER RECOMENDACIONES una sola vez.</li><li>Con el texto validado, podés cambiar de área y las recomendaciones se actualizan automáticamente, reiniciando el listado desde arriba. Después seleccioná entre una y cinco capacidades compatibles.</li><li>Presioná GENERAR COMANDO.</li><li>El comando aparecerá automáticamente en pantalla.</li><li>Copialo las veces que necesites y pegalo en la IA externa.</li></ol><p>Los cuatro tarjetones son caminos independientes. No hace falta utilizarlos todos.</p><p>El comando sólo activa una forma profesional de trabajo. La IA externa debe confirmar el modo y esperar tu primera tarea posterior.</p><p>Durante el desarrollo se observó interpretación correcta en distintas IA conversacionales externas. La aplicación no depende de ninguna de ellas ni garantiza un comportamiento idéntico entre proveedores.</p></div><div class="dialog-actions"><button class="btn primary" data-close="helpDialog">ENTENDIDO</button></div></dialog>
+
+  <dialog id="safetyDialog" aria-labelledby="safetyTitle"><div class="dialog-head"><h2 id="safetyTitle">Comando no generado</h2><button class="close" data-close="safetyDialog" aria-label="Cerrar">×</button></div><div class="dialog-body"><p id="safetyMessage">No se puede generar este comando.</p><p>El Centro de Comandos sólo crea modos profesionales legítimos. Podés reformular el pedido como un modo legal, preventivo, educativo, defensivo o profesional.</p></div><div class="dialog-actions"><button class="btn primary" data-close="safetyDialog">ENTENDIDO</button></div></dialog>
+
+  <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+  <script src="../js/commands.js" defer></script>
+  <script src="../js/engine.js" defer></script>
+  <script src="../js/safety.js" defer></script>
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/app.js" defer></script>
+</body>
+</html>

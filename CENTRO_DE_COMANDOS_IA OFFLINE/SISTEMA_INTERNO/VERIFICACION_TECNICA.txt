@@ -1,0 +1,125 @@
+CENTRO DE COMANDOS IA OFFLINE
+VERIFICACIÓN TÉCNICA — VERSION 1.1 ESTABLE
+FECHA DE VALIDACIÓN: 05/09/2026
+
+1. ALCANCE DE LA DISTRIBUCIÓN
+- Aplicación estática modular tipo SPA.
+- Funcionamiento offline.
+- Sin cuentas, servidor, API ni dependencias externas para el funcionamiento de la aplicación.
+- Resultado: comando de activación profesional para una IA externa.
+- La aplicación no ejecuta tareas ni genera contenido final.
+
+2. ESTRUCTURA DE LA DISTRIBUCIÓN
+- Raíz visible de uso: INICIAR_CENTRO_COMANDOS.bat y LEEME_PRIMERO.txt.
+- assets/ — recursos visuales de la aplicación.
+- js/ — motores y lógica JavaScript.
+- tests/ — batería reproducible de validación.
+- SISTEMA_INTERNO/ — archivos técnicos de la aplicación y documentación de distribución.
+- Se elimina CREAR_ACCESO_DIRECTO.bat por redundancia: Windows permite crear el acceso directo desde INICIAR_CENTRO_COMANDOS.bat.
+- Los archivos técnicos no se ocultan mediante atributos del sistema; simplemente se agrupan en una carpeta interna para separar uso de arquitectura.
+- Punto de entrada oficial: INICIAR_CENTRO_COMANDOS.bat.
+
+3. CONTROLES DE SINTAXIS
+- commands.js: OK
+- engine.js: OK
+- safety.js: OK
+- storage.js: OK
+- app.js: OK
+
+4. INTEGRIDAD DEL CATÁLOGO
+- Capacidades: 258
+- IDs duplicados: 0
+- Alias duplicados: 0
+- Campos estructurales requeridos: completos
+- Compilación individual de capacidades: 258/258 OK
+
+5. MOTOR Y COMPATIBILIDAD
+- Selección máxima: 5 capacidades.
+- Recomendaciones guiadas máximas: 12.
+- Preset de Desarrollo y Auditoría Integral: 5 capacidades válidas.
+- Pares posibles: 33.153.
+- Pares auditados en la suite reproducible: 33.153.
+- Asimetrías observadas: 0.
+- El orden de las capacidades no debe alterar la validez canónica de una combinación.
+
+6. BATERÍA DE REGRESIÓN
+Archivo: tests/regression.test.js
+Estado de la última ejecución: PASS
+Controles reportados: 19
+Incluye:
+- catálogo y unicidad;
+- estructura de capacidades;
+- compilación individual;
+- preset principal;
+- límite de selección;
+- muestra amplia de simetría;
+- conservación del modo Desarrollo y Auditoría Integral;
+- casos representativos de la compuerta preventiva;
+- persistencia exclusiva de favoritos;
+- migración de claves legacy sin conservar contexto;
+- CSP local;
+- ausencia de ExecutionPolicy Bypass;
+- ausencia de eval/new Function/fetch/XMLHttpRequest/WebSocket.
+
+7. AUDITORÍA DE COMPATIBILIDAD REPRODUCIBLE
+Archivo: tests/compatibility_audit.js
+Última ejecución: PASS
+- 33.153 pares comprobados.
+- 0 asimetrías.
+
+8. SEGURIDAD DE LA INTERFAZ
+- Content Security Policy presente.
+- default-src: self.
+- script-src: self.
+- style-src: self.
+- img-src: self.
+- connect-src: none.
+- object-src: none.
+- base-uri: none.
+- form-action: none.
+- No se detectan fetch, XMLHttpRequest ni WebSocket en JavaScript.
+- No se detectan eval ni new Function.
+
+9. INICIADORES WINDOWS
+- Se mantiene el perfil dedicado fuera de la distribución.
+- Las rutas se transfieren mediante variables de entorno.
+- PowerShell se invoca con -NoProfile -Command.
+- ExecutionPolicy Bypass eliminado.
+- El usuario debe iniciar la aplicación mediante INICIAR_CENTRO_COMANDOS.bat; index.html permanece dentro de SISTEMA_INTERNO como componente técnico.
+
+10. PERSISTENCIA
+- localStorage se limita a favoritos.
+- Contexto, filtros, selección y comando generado no se persisten.
+- Esquema de almacenamiento: 12, coherente con js/storage.js.
+- No se incorporan datos de navegación al paquete distribuible.
+
+11. ACCESIBILIDAD Y UI
+- Etiquetado accesible básico.
+- Gestión programática de foco al cambiar de vista.
+- Diálogos con títulos y acciones identificables.
+- Soporte de prefers-reduced-motion.
+- Scroll interno en áreas de contenido.
+- Sin scroll horizontal de escritorio previsto.
+- Referencia de escritorio: 1366x720/768 a 100% de zoom.
+
+12. COMPUERTA PREVENTIVA
+- Local, contextual y basada en reglas.
+- Bloquea intenciones operativas explícitas de daño, fraude, abuso informático, evasión de controles y contenido sexual vinculado a menores.
+- Permite contextos profesionales legítimos.
+- No es una moderación total ni una IA local.
+
+13. MODELO DE SEGURIDAD Y LÍMITE FUNCIONAL
+- El catálogo es cerrado: las 258 capacidades son preexistentes y el usuario no puede crear nuevas capacidades ni comandos fuera de ese catálogo.
+- El compilador selecciona, filtra, ordena y combina capacidades existentes; no convierte una solicitud arbitraria en una instrucción de trabajo.
+- El comando generado configura un modo profesional para una IA externa y exige confirmación del modo antes de cualquier tarea posterior.
+- La compuerta local es una capa preventiva ética básica y no constituye la única barrera de seguridad.
+- La seguridad de una tarea posterior también depende de la IA externa y de sus propias políticas.
+
+14. VALIDACIÓN EXTERNA
+La interpretación por proveedores de IA externos depende de cada proveedor y de su entorno. La aplicación no controla ni garantiza su comportamiento. Las pruebas reales realizadas por el usuario constituyen evidencia operacional del concepto de activación, persistencia y reemplazo de modos, no una garantía universal para todos los proveedores.
+
+15. ESTADO DE LA RELEASE
+VERSION 1.1 ESTABLE — APROBADA PARA DISTRIBUCIÓN TÉCNICA.
+La distribución incorpora los cambios de seguridad y la batería de regresión descritos arriba. No se declaran como probadas las condiciones que requieren Windows real, interacción visual E2E o proveedores externos si no se ejecutaron en este entorno.
+
+Copyright © 2026 Martín Guerrero

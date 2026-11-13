@@ -1,0 +1,91 @@
+CENTRO DE COMANDOS IA OFFLINE
+MICROAPLICACIONES OFFLINE
+
+VERSION 1.1 ESTABLE — 05/09/2026
+Distribución profesional estable del Centro de Comandos IA Offline.
+
+ESTADO
+- Aplicación funcional 100% offline.
+- Sin instalación, cuentas, servidores, API ni dependencias externas para el funcionamiento de la aplicación.
+- Los comandos generados configuran modos profesionales para una IA externa; la aplicación no ejecuta tareas ni genera contenido final.
+- La aplicación no muestra número de versión en la interfaz.
+- Esta carpeta contiene la distribución completa necesaria para su funcionamiento.
+
+ORGANIZACIÓN DE LA CARPETA
+- El único archivo de inicio para el usuario es INICIAR_CENTRO_COMANDOS.bat.
+- LEEME_PRIMERO.txt contiene las instrucciones de uso.
+- Las carpetas assets, js y tests forman parte de la arquitectura y pueden explorarse.
+- Los archivos técnicos de soporte se conservan dentro de SISTEMA_INTERNO para mantener la raíz limpia y evitar confusión sobre el punto de entrada.
+
+INICIO EN WINDOWS
+1. Extraiga la carpeta completa del ZIP.
+2. Haga doble clic en INICIAR_CENTRO_COMANDOS.bat.
+3. Si crea un acceso directo en el Escritorio, hágalo sobre INICIAR_CENTRO_COMANDOS.bat y conserve la carpeta completa en su ubicación.
+
+AVISO DE WINDOWS / SMARTSCREEN
+Según el origen del ZIP y la configuración de Windows, el sistema puede mostrar una advertencia al ejecutar un archivo .bat descargado o copiado desde otra ubicación. Si conoce y confía en el origen, revise la advertencia de Windows antes de continuar.
+
+QUÉ HACE
+La aplicación crea comandos profesionales para activar modos persistentes de trabajo en una IA externa. No ejecuta tareas, no genera contenido final y no convierte la descripción inicial en un pedido de producción.
+
+REGLA PRINCIPAL
+El comando generado configura cómo debe trabajar la IA externa. La IA debe confirmar el modo, enumerar las capacidades activas y esperar la primera tarea posterior del usuario.
+
+USO SIMPLE
+1. En la portada elija una sola forma de crear el modo.
+2. Si usa Crear un modo, escriba la descripción general y presione VALIDAR Y VER RECOMENDACIONES.
+3. Revise las recomendaciones guiadas. Pueden mostrarse hasta doce tarjetas compatibles. Son una selección filtrada por contexto y área; no representan las 258 capacidades completas.
+4. Seleccione entre una y cinco capacidades compatibles.
+5. Presione GENERAR COMANDO.
+6. Copie el comando generado.
+7. Pegue el comando en la IA externa.
+
+CAMINOS DISPONIBLES
+- Crear un modo: interpreta el contexto, activa un área profesional y recomienda capacidades compatibles.
+- Modos preparados: entrega combinaciones profesionales completas sin campos adicionales.
+- Biblioteca oficial: permite explorar y combinar las capacidades oficiales compatibles.
+- Favoritos: permite marcar y reutilizar únicamente capacidades oficiales ya existentes; no permite crear nuevos comandos ni nuevas capacidades.
+
+PRIVACIDAD Y DATOS
+- La aplicación no envía datos por Internet.
+- Sólo los favoritos se persisten en localStorage.
+- Contexto, filtros, selección y comando generado son transitorios.
+- El perfil dedicado del navegador se almacena fuera de la carpeta distribuible.
+- No se incorporan al paquete perfiles de navegador, historial, caché, sesiones ni temporales.
+
+SEGURIDAD PREVENTIVA
+- Existe una compuerta local basada en reglas antes de las recomendaciones guiadas.
+- Puede bloquear solicitudes con intención operativa explícita de daño, fraude, abuso informático, evasión de controles o contenido sexual vinculado a menores.
+- Puede permitir contextos legítimos de medicina, legal, forense, educación, prevención, investigación, seguridad defensiva y asistencia a víctimas.
+- Es una medida preventiva contextual; no es una IA local ni pretende sustituir la seguridad de la IA externa.
+
+CAMBIOS TÉCNICOS DE ESTA DISTRIBUCIÓN
+- Batería reproducible de regresión para el catálogo, motor, compilador, compatibilidad, seguridad, almacenamiento y controles offline.
+- Content Security Policy local con connect-src 'none'.
+- Iniciadores Windows endurecidos: PowerShell se invoca sin ExecutionPolicy Bypass.
+- Esquema de almacenamiento: versión 12, coherente con la implementación real; la distribución no introduce una migración estructural de almacenamiento.
+- Manifiesto, documentación y hashes corresponden a esta distribución.
+
+PRUEBAS DE DESARROLLO
+Las pruebas automatizadas están en tests/ y no son necesarias para ejecutar la aplicación.
+
+Con Node.js instalado, desde la carpeta raíz:
+  node tests/regression.test.js
+  node tests/compatibility_audit.js
+
+La primera batería valida 18 controles automatizados. La segunda verifica los 33.153 pares posibles de compatibilidad y registra las asimetrías observadas.
+
+Estas pruebas no sustituyen una prueba visual E2E en Windows ni la comprobación de interpretación por parte de proveedores de IA externos.
+
+ALCANCE REAL
+- 258 capacidades incorporadas.
+- Máximo de 5 capacidades combinadas.
+- Hasta 12 recomendaciones guiadas.
+- 14 modos preparados.
+- 17 categorías.
+- 13 perfiles.
+- Sin comandos creados por el usuario dentro del catálogo; las capacidades son oficiales, preexistentes y combinables, no generadas desde cero.
+- Sin ejecución de tareas.
+- Sin producción automática de contenido.
+
+Copyright © 2026 Martín Guerrero
